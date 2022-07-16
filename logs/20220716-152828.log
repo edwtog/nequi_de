@@ -1,0 +1,5 @@
+INFO:root:Started infra creation
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:root:Bucket created
+INFO:root:Finished infra creation
+INFO:root:Datasets_loaded

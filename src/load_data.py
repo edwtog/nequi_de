@@ -1,7 +1,9 @@
 import logging
+import pandas as pd
 from kaggle.api.kaggle_api_extended import KaggleApi
 
 #kaggle datasets download -d wkirgsn/electric-motor-temperature
+
 
 def load_datsets():
     api = KaggleApi()
@@ -10,3 +12,8 @@ def load_datsets():
     api.dataset_download_files("ranadeep/credit-risk-dataset", "data/raw/credit-risk/", unzip=True)
     api.dataset_download_files("nbroad/cite-sum", "data/raw/cite-sum/", unzip=True)
     logging.info('Datasets_loaded')
+
+
+
+
+
