@@ -8,7 +8,7 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 dataset_1 = "https://www.kaggle.com/datasets/wkirgsn/electric-motor-temperature"
 api = KaggleApi()
 api.authenticate()
-api.dataset_download_files("wkirgsn/electric-motor-temperature", "data/raw/electric-motor-temperature")
+api.dataset_download_files("wkirgsn/electric-motor-temperature", "data/raw/electric-motor-temperature", unzip=True)
 
 
 print("Done!!")
