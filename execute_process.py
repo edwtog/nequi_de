@@ -9,7 +9,7 @@ import src.load_data as load_data
 
 def main():
     file_date = time.strftime("%Y%m%d-%H%M%S")
-    logging.basicConfig(filename='logs/'+file_date+'.log', level=logging.DEBUG)
+    logging.basicConfig(filename='logs/'+file_date+'.log', level=logging.INFO)
     logging.info('Started infra creation')
     infra.create_infra()
     logging.info('Finished infra creation')
