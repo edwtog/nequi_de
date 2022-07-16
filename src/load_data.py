@@ -9,4 +9,4 @@ def load_datsets():
     api.dataset_download_files("wkirgsn/electric-motor-temperature", "data/raw/electric-motor-temperature/", unzip=True)
     api.dataset_download_files("ranadeep/credit-risk-dataset", "data/raw/credit-risk/", unzip=True)
     api.dataset_download_files("nbroad/cite-sum", "data/raw/cite-sum/", unzip=True)
-    logging.info('Datsets_loaded')
+    logging.info('Datasets_loaded')
