@@ -53,4 +53,6 @@ def upload_datasets():
 if __name__ == '__main__':
 
     #upload_datasets()
+    rel_path = "data/raw/credit-risk/loan/loan.csv"
+    abs_file_path = os.path.join(os.path.dirname(__file__), rel_path)
     data = pd.read_csv(abs_file_path)
