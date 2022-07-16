@@ -19,7 +19,7 @@ def main():
     api.authenticate()
     api.dataset_download_files("wkirgsn/electric-motor-temperature", "data/raw/electric-motor-temperature/", unzip=True)
     api.dataset_download_files("ranadeep/credit-risk-dataset", "data/raw/credit-risk/", unzip=True)
-    api.dataset_download_files("nbroad/cite-sum", "data/raw/citeSum/")
+    api.dataset_download_files("nbroad/cite-sum", "data/raw/cite-sum/", unzip=True)
 
 if __name__ == '__main__':
     main()
