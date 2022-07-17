@@ -32,4 +32,4 @@ def create_infra():
     if create_bucket(bucket_name="prueba-nequi", region=None):
         logging.info("Bucket created")
     else:
-        logging.info("Bucket not created")
+        logging.WARNING("Bucket not created")

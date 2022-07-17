@@ -4,6 +4,7 @@ import boto3
 from botocore.exceptions import ClientError
 import os
 from datetime import datetime
+from utils.definitions import ROOT_DIR
 
 def upload_file(file_name, bucket, object_name=None):
     """Upload a file to an S3 bucket
@@ -35,20 +36,25 @@ def upload_datasets():
     month = now.strftime("%m")
     day = now.strftime("%d")
 
-    rel_path = "data/raw/credit-risk/loan/loan.csv"
-    abs_file_path = os.path.join(os.path.dirname(__file__), rel_path)
-    upload_file(abs_file_path, bucket="prueba-nequi",
-                object_name="raw/credit-risk/{}/{}/{}/loan.csv".format(year, month, day))
+    try:
+        rel_path = "data/raw/credit-risk/loan/loan.csv"
+        abs_file_path = os.path.join(ROOT_DIR, rel_path)
+        upload_file(abs_file_path, bucket="prueba-nequi",
+                    object_name="raw/credit-risk/{}/{}/{}/loan.csv".format(year, month, day))
 
-    rel_path = "data/raw/electric-motor-temperature/measures_v2.csv"
-    abs_file_path = os.path.join(os.path.dirname(__file__), rel_path)
-    upload_file(abs_file_path, bucket="prueba-nequi",
-                object_name="raw/electric-motor-temperature/{}/{}/{}/measures_v2.csv".format(year, month, day))
+        rel_path = "data/raw/electric-motor-temperature/measures_v2.csv"
+        abs_file_path = os.path.join(ROOT_DIR, rel_path)
+        upload_file(abs_file_path, bucket="prueba-nequi",
+                    object_name="raw/electric-motor-temperature/{}/{}/{}/measures_v2.csv".format(year, month, day))
 
-    rel_path = "data/raw/cite-sum/train.json"
-    abs_file_path = os.path.join(os.path.dirname(__file__), rel_path)
-    upload_file(abs_file_path, bucket="prueba-nequi",
-                object_name="raw/cite-sim/{}/{}/{}/data.json".format(year, month, day))
+        rel_path = "data/raw/cite-sum/train.json"
+        abs_file_path = os.path.join(ROOT_DIR, rel_path)
+        upload_file(abs_file_path, bucket="prueba-nequi",
+                    object_name="raw/cite-sim/{}/{}/{}/data.json".format(year, month, day))                   
+    except:
+        logging.INFO('Datasets cant be uploaded to S3')
+        return False
+    return True
 
 if __name__ == '__main__':
 
