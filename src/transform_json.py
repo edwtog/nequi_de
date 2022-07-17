@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import pandas as pd
 
 from utils.definitions import ROOT_DIR
 
@@ -19,15 +20,27 @@ def trf_json():
                 if item['discipline'] is not None:
                     discipline = item['discipline']
                 else:
-                    discipline = {'venue':'not specified', 'journal':'not specified', 'mag_field_of_study':'not specified'}
+                    discipline = {'venue':'not specified', 'journal':'not specified',
+                                  'mag_field_of_study':['not specified']}
                 discipline['paper_id'] = item['paper_id']
                 discipline_info.append(discipline)
                 item.pop('discipline')
                 papers_info.append(item)
             
-        print(len(discipline_info))
-        print(len(papers_info))
+        papers_df = pd.DataFrame(papers_info)
+        discipline_df = pd.DataFrame(discipline_info)
+
+        print(discipline_df.shape)
+        print(papers_df.shape)
+
+        rel_path_papers = "data/processed/cite-sum/papers_df.parquet.gzip"
+        rel_path_discipline = "data/processed/cite-sum/discipline_df.parquet.gzip"
+        papers_df.to_parquet(os.path.join(ROOT_DIR, rel_path_papers),
+                             engine='pyarrow', compression='gzip')
+        discipline_df.to_parquet(os.path.join(ROOT_DIR, rel_path_discipline),
+                             engine='pyarrow', compression='gzip')
+
     except:
-        logging.INFO('Failed !!!')
+        logging.info('parquet failed !!!')
         return False
     return True

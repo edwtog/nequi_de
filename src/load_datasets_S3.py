@@ -52,7 +52,7 @@ def upload_datasets():
         upload_file(abs_file_path, bucket="prueba-nequi",
                     object_name="raw/cite-sim/{}/{}/{}/data.json".format(year, month, day))                   
     except:
-        logging.INFO('Datasets cant be uploaded to S3')
+        logging.info('Datasets cant be uploaded to S3')
         return False
     return True
 
