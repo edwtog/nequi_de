@@ -35,6 +35,7 @@ pandas-profiling @ file:///home/conda/feedstock_root/build_artifacts/pandas-prof
 patsy @ file:///home/conda/feedstock_root/build_artifacts/patsy_1632667180946/work
 phik @ file:///D:/bld/phik_1647910369308/work
 Pillow @ file:///D:/bld/pillow_1657007292472/work
+pyarrow==8.0.0
 pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
 pydantic @ file:///D:/bld/pydantic_1653020951067/work
 pyOpenSSL @ file:///opt/conda/conda-bld/pyopenssl_1643788558760/work

@@ -8,7 +8,7 @@ from src.load_data import load_datasets
 from src.load_datasets_S3 import upload_datasets
 from src.transform_credit_risk import trf_csv as trf_csv_credit_risk
 from src.transform_electric_motor_temperature import trf_csv as trf_csv_electric_motor_temp
-from src.transform_json import trf_json
+from src.transform_json_cite_sum import trf_json
 
 from utils.definitions import ROOT_DIR
 
