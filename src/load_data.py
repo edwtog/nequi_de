@@ -10,7 +10,7 @@ def load_datasets():
         api.dataset_download_files("ranadeep/credit-risk-dataset", "data/raw/credit-risk/", unzip=True)
         api.dataset_download_files("nbroad/cite-sum", "data/raw/cite-sum/", unzip=True)
     except:
-        logging.INFO('Datasets cant be loaded')
+        logging.info('Datasets cant be loaded')
         return False
     return True
 

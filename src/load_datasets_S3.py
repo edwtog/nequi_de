@@ -4,7 +4,7 @@ import boto3
 from botocore.exceptions import ClientError
 import os
 from datetime import datetime
-from utils.definitions import ROOT_DIR
+from utils.definitions import ROOT_DIR, BUCKET_NAME
 
 def upload_file(file_name, bucket, object_name=None):
     """Upload a file to an S3 bucket
@@ -39,22 +39,32 @@ def upload_datasets():
     try:
         rel_path = "data/raw/credit-risk/loan/loan.csv"
         abs_file_path = os.path.join(ROOT_DIR, rel_path)
-        upload_file(abs_file_path, bucket="prueba-nequi",
+        upload_file(abs_file_path, bucket=BUCKET_NAME,
                     object_name="raw/credit-risk/{}/{}/{}/loan.csv".format(year, month, day))
 
         rel_path = "data/raw/electric-motor-temperature/measures_v2.csv"
         abs_file_path = os.path.join(ROOT_DIR, rel_path)
-        upload_file(abs_file_path, bucket="prueba-nequi",
+        upload_file(abs_file_path, bucket=BUCKET_NAME,
                     object_name="raw/electric-motor-temperature/{}/{}/{}/measures_v2.csv".format(year, month, day))
 
         rel_path = "data/raw/cite-sum/train.json"
         abs_file_path = os.path.join(ROOT_DIR, rel_path)
-        upload_file(abs_file_path, bucket="prueba-nequi",
+        upload_file(abs_file_path, bucket=BUCKET_NAME,
                     object_name="raw/cite-sim/{}/{}/{}/data.json".format(year, month, day))                   
     except:
         logging.info('Datasets cant be uploaded to S3')
         return False
     return True
+
+def upload_parquet(parquet_name, data_source, zone):
+    now = datetime.now() # current date and time
+    year = now.strftime("%Y")
+    month = now.strftime("%m")
+    day = now.strftime("%d")
+
+    upload_file(file_name = "data/{}/{}/{}".format(zone, data_source, parquet_name),
+                bucket=BUCKET_NAME,
+                object_name="{}/{}/{}/{}/{}/{}".format(zone, data_source, year, month, day, parquet_name))
 
 if __name__ == '__main__':
 

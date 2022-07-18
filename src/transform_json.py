@@ -4,9 +4,10 @@ import logging
 import pandas as pd
 
 from utils.definitions import ROOT_DIR
+from utils.eda import profiling_df
+from src.load_datasets_S3 import upload_parquet
 
-
-def trf_json():
+def trf_json(profiling=False):
     try:
         rel_path = "data/raw/cite-sum/train.json"
         abs_file_path = os.path.join(ROOT_DIR, rel_path)
@@ -29,9 +30,8 @@ def trf_json():
             
         papers_df = pd.DataFrame(papers_info)
         discipline_df = pd.DataFrame(discipline_info)
-
-        print(discipline_df.shape)
-        print(papers_df.shape)
+        profiling_df(papers_df, name='cite-sum papers')
+        profiling_df(discipline_df, name='cite-sum discipline')
 
         rel_path_papers = "data/processed/cite-sum/papers_df.parquet.gzip"
         rel_path_discipline = "data/processed/cite-sum/discipline_df.parquet.gzip"
@@ -40,7 +40,11 @@ def trf_json():
         discipline_df.to_parquet(os.path.join(ROOT_DIR, rel_path_discipline),
                              engine='pyarrow', compression='gzip')
 
+        upload_parquet(parquet_name='papers_df.parquet.gzip',
+                       data_source='cite-sum',
+                       zone='processed')
+
     except:
-        logging.info('parquet failed !!!')
+        logging.INFO('parquet failed !!!')
         return False
     return True

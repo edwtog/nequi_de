@@ -34,6 +34,6 @@ if __name__ == '__main__':
     #print(data.shape)
 
     # json files
-    if trf_json():
+    if trf_json(profiling=False):
         logging.info('json to parquet')
 
