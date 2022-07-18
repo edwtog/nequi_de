@@ -6,6 +6,7 @@ import pandas as pd
 import src.infra as infra
 from src.load_data import load_datasets
 from src.load_datasets_S3 import upload_datasets
+from src.transform_csv import trf_csv
 from src.transform_json import trf_json
 
 from utils.definitions import ROOT_DIR
@@ -27,13 +28,13 @@ if __name__ == '__main__':
     logging.info('Uploading datasets to S3')
     if upload_datasets():
         logging.info('datasets loaded to S3')
-    '''
-    #rel_path = "data/raw/credit-risk/loan/loan.csv"
-    #abs_file_path = os.path.join(ROOT_DIR, rel_path)
-    #data = pd.read_csv(abs_file_path)
-    #print(data.shape)
-
+    
     # json files
-    if trf_json(profiling=False):
+    if trf_json():
         logging.info('json to parquet')
 
+    '''
+
+    # csv files
+    if trf_csv(data_source='credit-risk', file_name='loan/loan.csv'):
+        logging.info('csv to parquet')

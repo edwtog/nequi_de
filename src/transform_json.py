@@ -7,7 +7,7 @@ from utils.definitions import ROOT_DIR
 from utils.eda import profiling_df
 from src.load_datasets_S3 import upload_parquet
 
-def trf_json(profiling=False):
+def trf_json():
     try:
         rel_path = "data/raw/cite-sum/train.json"
         abs_file_path = os.path.join(ROOT_DIR, rel_path)
@@ -49,6 +49,6 @@ def trf_json(profiling=False):
                        zone='processed')
 
     except:
-        logging.INFO('parquet failed !!!')
+        logging.info('parquet failed !!!')
         return False
     return True
