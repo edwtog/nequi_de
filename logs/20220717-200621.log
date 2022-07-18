@@ -1,2 +1,0 @@
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:root:csv to parquet
