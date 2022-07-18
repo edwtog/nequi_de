@@ -44,6 +44,10 @@ def trf_json(profiling=False):
                        data_source='cite-sum',
                        zone='processed')
 
+        upload_parquet(parquet_name='discipline_df.parquet.gzip',
+                       data_source='cite-sum',
+                       zone='processed')
+
     except:
         logging.INFO('parquet failed !!!')
         return False
