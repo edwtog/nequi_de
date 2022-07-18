@@ -30,7 +30,7 @@ Pendiente migrar la creación de infraestructura utilizando AWS cli en un archiv
 
 ## 4. Proceso
 
-La ejecución del script `exececute_process.py` orquesta el flujo de los datos. La infraestructura se crea con el script `src/infra.py` que en este caso corresponde a la creación de un bucket en S3. A partir del **Processed** se podrán incoporar componentes para consultar la informacion con SQL.
+La ejecución del script `exececute_process.py` orquesta el flujo de los datos. La infraestructura se crea con el script `src/infra.py` que en este caso corresponde a la creación de un bucket en S3. A partir del **Processed** se podrán incoporar componentes para consultar la información con SQL.
 
 Los scripts `scr/transform_*.py` realizan los procesos de estandarización posteriores a la revisión de los datos. 
 
@@ -50,13 +50,13 @@ Se utiliza Unittest
    * Transformar a un formato estandar
    * Almacenar con propósito de consulta ágil (Particionamiento y compresión)
 2. Necesidad de los datos  
-   No se asume necesidad de profundizar en el entendimiento particular de cada base. El jercicio se dirije a la necesidad de almacenar las fuentes después de adelantar procesos de normalización y/o estandarización, permitiendo su fácil consulta a través de otras herramientas (ej. Athena).  
+   No se asume necesidad de profundizar en el entendimiento particular de cada base. El ejercicio se dirije a la necesidad de almacenar las fuentes después de adelantar procesos de normalización y/o estandarización, permitiendo su fácil consulta a través de otras herramientas (ej. Athena).  
    Se suministra información descriptiva de cada tabla disponible (Profiling_reports).  
      
    Considerando el propósito del caso uso, los datos se disponibilizarán a partir de **processed** para adoptar el modelo que se ajuste:
-      * Business intelligence - BI: Métricas, indicadores, KPI (Bases de datos relacionales, modelos estrella o snowflake)
-      * Business analytics - BA: Entendimineto del cliente, interacción y comportamineto con la App, CLTV, segmentos, analítica digital
-      * Advanced analytics - AA: Exploración de datos crudos, integracion de multiples fuentes, desarrollo de bases para entrenamiento de modelos
+      * Business intelligence - BI: Métricas, indicadores, KPI (Bases de datos relacionales, modelos estrella o snowflake, tablas de hechos y dimensiones)
+      * Business analytics - BA: Entendimineto del cliente, interacción y comportamineto con la App, CLTV, segmentos, analítica digital (BD relacional)
+      * Advanced analytics - AA: Exploración de datos crudos, integracion de multiples fuentes, desarrollo de bases para entrenamiento de modelos (Datos crudos o procesados, BD)
 
 3. Modelo elegido
    * Tablas relacionales (para llevar a una BD)
