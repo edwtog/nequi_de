@@ -24,7 +24,7 @@ Se realiza una exploración sencilla sobre los datos transformados a **Pandas Da
 
 Se cuenta con dos zonas de almacenamiento utilizando particionamiento. En **Raw** los datos se almacenan con su estructura y formato original. En **Processed** se almacenan como tablas en formato parquet comprimido. De acuerdo al esquema original se generan tablas que conserven el relacionamiento en las tablas resultantes (ej. archivos json).
 
-Pendiente migrar la creación de infraestructura utilizando AWS cli en un archivo .sh . Opcion avanzada, con equipo DevOps terraformar la arquitectura de este y demás componentes adicionales orquestando la ejecución del proceso completo (infra, code test, ETL) con una herraminenta de CI/CD. 
+⚠️ Pendiente migrar la creación de infraestructura utilizando AWS cli en un archivo .sh . Opcion avanzada, con equipo DevOps terraformar la arquitectura de este y demás componentes adicionales orquestando la ejecución del proceso completo (infra, code test, ETL) con una herraminenta de CI/CD. 
 
 ![Alt text](img/diagram_01.jpg "Architecre Overview")
 
@@ -32,11 +32,13 @@ Pendiente migrar la creación de infraestructura utilizando AWS cli en un archiv
 
 La ejecución del script `exececute_process.py` orquesta el flujo de los datos. La infraestructura se crea con el script `src/infra.py` que en este caso corresponde a la creación de un bucket en S3. A partir del **Processed** se podrán incoporar componentes para consultar la información con SQL.
 
-Los scripts `scr/transform_*.py` realizan los procesos de estandarización posteriores a la revisión de los datos. 
+Los scripts `scr/transform_*.py` realizan los procesos de estandarización posteriores a la revisión de los datos.  
+
+⚠️ Pendiente verificar que el bucket ya existe antes de crearlo
 
 ### Pruebas unitarias
 
-Pendiente dar mayor cobertura sobre las pruebas
+⚠️ Pendiente dar mayor cobertura sobre las pruebas
 
 Se utiliza Unittest
 
