@@ -16,12 +16,11 @@ def trf_csv(data_source, file_name):
         rel_path = "data/processed/{}/measures.parquet.gzip".format(data_source)
         df.to_parquet(os.path.join(ROOT_DIR, rel_path),
                              engine='pyarrow', compression='gzip')
-        '''
-        
-        upload_parquet(parquet_name='loan_reduce_df.parquet.gzip',
+
+        upload_parquet(parquet_name='measures.parquet.gzip',
                 data_source=data_source,
                 zone='processed')
-        '''
+
     except:
         logging.info('parquet failed !!!')
         return False
