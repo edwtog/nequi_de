@@ -34,6 +34,8 @@ La ejecución del script `exececute_process.py` orquesta el flujo de los datos. 
 
 Los scripts `scr/transform_*.py` realizan los procesos de estandarización posteriores a la revisión de los datos.  
 
+⚠️ Validar credenciales API kaggle, AWS
+⚠️ Pendiente cerificar que la estructura del directorio este creada
 ⚠️ Pendiente verificar que el bucket ya existe antes de crearlo
 
 ### Pruebas unitarias
